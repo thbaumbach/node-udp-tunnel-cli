@@ -8,8 +8,7 @@
 
 'use strict';
 
-function rinfo2buffer(rinfo)
-{
+module.exports.rinfo2buffer = (rinfo) => {
     let ip = rinfo.address.split('.'),
         buf = new Buffer(6);
     buf.writeUInt8(parseInt(ip[0]), 0);
@@ -20,8 +19,7 @@ function rinfo2buffer(rinfo)
     return buf; 
 }
 
-function buffer2rinfo(buf)
-{
+module.exports.buffer2rinfo = (buf) => {
     return {
         address : `${buf.readUInt8(0)}.${buf.readUInt8(1)}.${buf.readUInt8(2)}.${buf.readUInt8(3)}`,
         port : buf.readUInt16BE(4)

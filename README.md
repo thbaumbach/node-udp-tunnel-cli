@@ -4,6 +4,17 @@
 
 `udp-tunnel-cli` lets you tunnel any UDP connection/socket. This makes it possible to tunnel listening UDP sockets from one machine to any other endpoint on a different machine (i.e. through firewalls).
 
+```
+                                   |
+listen-port  /----\  tunnel-port   |   tunnel-connection  /----\  local-connection  /----\
+           > |    | < -------------|------------------- < |    | > -------------- > |    |
+             \----/                |                      \----/                    \----/
+     public machine running        |                   local machine(s) protected by firewall
+       udp-tunnel-server        firewall             udp-tunnel-client           local server
+   with open listen-port for
+      incoming connections
+```
+
 ## Install
 
 Install this package globally using [NPM](https://www.npmjs.com/). Most OS need you to be root (e.g. using `sudo`) to install a global npm package:
@@ -44,6 +55,10 @@ Found a bug? Open an issue [here](https://github.com/thbaumbach/node-udp-tunnel-
 Wanna help? Submit a pull request or contact me.
 
 Wanna tip me a beer? Use [Bitcoin](bitcoin:14pSD9AmuNhLDbGRXehxbhwzRSRrkpiAKg): 14pSD9AmuNhLDbGRXehxbhwzRSRrkpiAKg
+
+## Disclaimer
+
+The tunnel connection and server is not protected by any password or encryption. Only use this software if you're fully aware of what you're doing and understand the responsibility!
 
 ## License
 

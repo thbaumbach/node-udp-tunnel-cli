@@ -8,10 +8,10 @@
 
 'use strict';
 
-require('./helper');
+const helper = require('./helper');
 
 if (process.argv.length !== 4) {
-    console.log('usage:', 'node', process.argv[1], '<listen-port> <tunnel-port>');
+    console.log('usage:', 'udp-tunnel-server', '<listen-port> <tunnel-port>');
     process.exit(-1);
 }
 
@@ -38,11 +38,11 @@ server_listen.on('message', (msg, rinfo) => {
     }
     else
     {
-        let rinfo_buf = rinfo2buffer(rinfo),
+        let rinfo_buf = helper.rinfo2buffer(rinfo),
             new_msg = Buffer.concat([rinfo_buf, msg], rinfo_buf.length + msg.length);
         server_tunnel.send(new_msg, 0, new_msg.length, unicorn.port, unicorn.address, (err) => { if (err) throw err; });
     }
-    //console.log(`listen server got: ${msg} from ${rinfo2buffer(rinfo).toString('hex')}`);
+    //console.log(`listen server got: ${msg} from ${helper.rinfo2buffer(rinfo).toString('hex')}`);
 });
 server_listen.on('listening', () => {
     var address = server_listen.address();
@@ -60,14 +60,14 @@ server_tunnel.on('message', (msg, rinfo) => {
     {
         console.log(`tunnel connection set for ${rinfo.address}:${rinfo.port}`);
         unicorn = rinfo;
-        unicorn_buf = rinfo2buffer(rinfo);
+        unicorn_buf = helper.rinfo2buffer(rinfo);
     }
     else
     {
-        let rinfo = buffer2rinfo(msg);
+        let rinfo = helper.buffer2rinfo(msg);
         server_listen.send(msg.slice(6), 0, msg.length-6, rinfo.port, rinfo.address, (err) => { if (err) throw err; });
     }
-    //console.log(`tunnel server got: ${msg} from ${rinfo2buffer(rinfo).toString('hex')}`);
+    //console.log(`tunnel server got: ${msg} from ${helper.rinfo2buffer(rinfo).toString('hex')}`);
 });
 server_tunnel.on('listening', () => {
     var address = server_tunnel.address();
