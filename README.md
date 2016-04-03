@@ -10,7 +10,7 @@ listen-port  /----\  tunnel-port     |     tunnel-connection  /----\    local-co
            > |    | < ---------------|--------------------- < |    | > ------------------ > |    |
              \----/                  |                        \----/                        \----/
      public machine running          |                       local machine(s) protected by firewall
-       udp-tunnel-server          firewall                udp-tunnel-client              local server
+       udp-tunnel-server         (firewall)               udp-tunnel-client              local server
    with open listen-port for
       incoming connections
 ```
@@ -20,10 +20,10 @@ listen-port  /----\  tunnel-port     |     tunnel-connection  /----\    local-co
 Install this package globally using [NPM](https://www.npmjs.com/). Most OS need you to be root (e.g. using `sudo`) to install a global npm package:
 
 ```sh
-$ npm -g install udp-unnel-cli
+$ [sudo] npm -g install udp-tunnel-cli
 ```
 
-`udp-tunnel-cli` depends on [Node.js](https://nodejs.org/) and no other modules. Tested with `node v4.3.0`.
+`udp-tunnel-cli` depends on [Node.js](https://nodejs.org/). Tested with `node v4.3.0`.
 
 ## Usage: server
 

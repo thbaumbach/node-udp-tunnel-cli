@@ -1,6 +1,6 @@
 {
   "name": "udp-tunnel-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A tiny command-line toolkit to tunnel any UDP connection/socket to another machine.",
   "homepage": "https://github.com/thbaumbach/node-udp-tunnel-cli",
   "readmeFilename": "README.md",
