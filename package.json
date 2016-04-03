@@ -1,0 +1,40 @@
+{
+  "name": "udp-tunnel-cli",
+  "version": "0.1.0",
+  "description": "A tiny command-line toolkit to tunnel any UDP connection/socket to another machine.",
+  "homepage": "https://github.com/thbaumbach/node-udp-tunnel-cli",
+  "readmeFilename": "README.md",
+  "scripts": {
+    "test": "echo no tests yet"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "udp-tunnel-client": "bin/udp-tunnel-client",
+    "udp-tunnel-server": "bin/udp-tunnel-server"
+  },
+  "directories": {
+    "src": "./src"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/thbaumbach/node-udp-tunnel-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/thbaumbach/node-udp-tunnel-cli/issues"
+  },
+  "dependencies": {
+  },
+  "keywords": [
+    "tunnel",
+    "udp",
+    "network",
+    "client",
+    "server",
+    "proxy",
+    "agent",
+    "cli",
+    "command"
+  ],
+  "author": "Thomas Baumbach <tom@xolo.pw>",
+  "license": "MIT"
+}
